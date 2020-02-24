@@ -35,6 +35,16 @@ const onChangePassword = function (event) {
     .catch(ui.onChangePasswordFailure)
 }
 
+const onAddQuote = function (event) {
+  event.preventDefault()
+  const form = event.target
+  const getForm = getFormFields(form)
+
+  api.addQuote(getForm)
+    .then(ui.onAddQuoteSuccess)
+    .catch(ui.onAddQuoteFailure)
+}
+
 const onLogOut = function (event) {
   event.preventDefault()
 
@@ -47,5 +57,6 @@ module.exports = {
   onSignUp,
   onSignIn,
   onChangePassword,
-  onLogOut
+  onLogOut,
+  onAddQuote
 }

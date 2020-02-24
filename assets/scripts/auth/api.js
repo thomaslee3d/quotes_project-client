@@ -40,9 +40,21 @@ const changePassword = function (data) {
   })
 }
 
+const addQuote = function (data) {
+  return $.ajax({
+    url: config.apiUrl + 'quotes',
+    method: 'PATCH',
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    },
+    data: data
+  })
+}
+
 module.exports = {
   signUp,
   signIn,
   changePassword,
-  logOut
+  logOut,
+  addQuote
 }
