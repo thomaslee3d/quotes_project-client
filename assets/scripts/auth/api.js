@@ -30,19 +30,9 @@ const logOut = function () {
 }
 
 const changePassword = function (data) {
+  console.log('this is my change passw patch')
   return $.ajax({
     url: config.apiUrl + '/change-password',
-    method: 'PATCH',
-    headers: {
-      Authorization: 'Token token=' + store.user.token
-    },
-    data: data
-  })
-}
-
-const addQuote = function (data) {
-  return $.ajax({
-    url: config.apiUrl + 'quotes',
     method: 'PATCH',
     headers: {
       Authorization: 'Token token=' + store.user.token
@@ -55,6 +45,5 @@ module.exports = {
   signUp,
   signIn,
   changePassword,
-  logOut,
-  addQuote
+  logOut
 }

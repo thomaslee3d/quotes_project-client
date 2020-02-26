@@ -1,7 +1,7 @@
 'use strict'
 
-const quoteAuth = require('./auth/events')
-const quoteUpdate = require
+const userAuth = require('./auth/events')
+const quoteAuth = require('./quotes/events')
 // const gameEvents = require('./games/events')
 // const gameUi = require('./games/ui')
 
@@ -13,8 +13,8 @@ const quoteUpdate = require
 
 $(() => {
   // your JS code goes here
-  $('#sign-in').on('submit', quoteAuth.onSignIn)
-  $('#sign-up').on('submit', quoteAuth.onSignUp)
-  $('#change-password').on('submit', quoteAuth.onSignUp)
+  $('#sign-in').on('submit', userAuth.onSignIn)
+  $('#sign-up').on('submit', userAuth.onSignUp)
+  $('#change-password').on('submit', userAuth.onChangePassword)
   $('#add-quote').on('submit', quoteAuth.onAddQuote)
 })
