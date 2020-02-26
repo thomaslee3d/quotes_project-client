@@ -31,14 +31,14 @@
            <input name="credentials[email]" type="text" placeholder="email">
            <input name="credentials[password]" type="password" placeholder="password">
 
-           <input type='submit' class='btn' value='log in'>
+           <input type='submit' class='btn' value='sign in'>
 
      </form>
 
      <form id="add-quote">
-           <input name="name[given_name]" type="text" placeholder="Quote Author">
-           <input name="quote[quote]" type="text" placeholder="quote">
-           <input type='submit' type='text'>
+           <input name="quote[given_name]" type="text" placeholder="Quote Author">
+           <input name="quote[quote]" type="text" placeholder="Quote">
+           <input type='submit' class='btn' value='add quote'>
      </form>
 
      <form id="change-password">
@@ -46,6 +46,16 @@
         <input name="passwords[new]" type="password" placeholder="new password">
         <input type='submit' class='btn' value="change-password">
     </form>
+
+    <div id="content" class="content"></div>
+
+    <form id='user-buttons'>
+      <input name="quote[id]" type="text" placeholder="Quote">
+      <button id='show-quotes-btn' value='Show Quotes'>Show Quotes</button>
+      <button id='delete-quotes' value='Delete Quotes'>Delete Quotes</button>
+    </form>
+
+
 
     </body>
 </html>

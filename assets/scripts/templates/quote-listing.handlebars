@@ -1,0 +1,19 @@
+{{#each quotes as |quote|}}
+  {{log quote}}
+  <section data-id="{{quote.id}}">
+    <h6>Person:</h6>
+    <h3>
+      {{quote.given_name}}
+    </h3>
+    <h6>Saying:</h6>
+    <p>
+      {{#if quote.quote}}
+        {{quote.quote}}
+      {{else}}
+        Add Saying for Person.
+      {{/if}}
+    </p>
+
+  </section>
+
+{{/each}}

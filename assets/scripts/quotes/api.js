@@ -4,10 +4,33 @@ const config = require('./../config')
 const store = require('./../store')
 
 const addQuote = function (data) {
-  console.log('This is my Add Quote Ajax Patch Request')
   return $.ajax({
-    url: config.apiUrl + 'quotes',
-    method: 'PATCH',
+    url: `${config.apiUrl}/quotes`,
+    method: 'POST',
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    },
+    data: data
+    //   given_name: data.name,
+    //   quote: data.quote
+    // }
+  })
+}
+
+const showQuotes = function () {
+  return $.ajax({
+    url: `${config.apiUrl}/quotes`,
+    method: 'GET',
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    }
+  })
+}
+
+const deleteQuotes = function (data) {
+  return $.ajax({
+    url: `${config.apiUrl}/quotes/${data.id}`,
+    method: 'DELETE',
     headers: {
       Authorization: 'Token token=' + store.user.token
     },
@@ -16,5 +39,7 @@ const addQuote = function (data) {
 }
 
 module.exports = {
-  addQuote
+  addQuote,
+  showQuotes,
+  deleteQuotes
 }

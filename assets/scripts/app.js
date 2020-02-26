@@ -17,4 +17,5 @@ $(() => {
   $('#sign-up').on('submit', userAuth.onSignUp)
   $('#change-password').on('submit', userAuth.onChangePassword)
   $('#add-quote').on('submit', quoteAuth.onAddQuote)
+  quoteAuth.addHandlers()
 })
