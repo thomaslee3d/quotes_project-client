@@ -2,7 +2,7 @@
 
 let apiUrl
 const apiUrls = {
-  production: 'https://pacific-savannah-14495.herokuapp.com/',
+  production: ' https://thomaslee3d.github.io/quotes_project-client//',
   development: 'https://pacific-savannah-14495.herokuapp.com/'
 }
 
