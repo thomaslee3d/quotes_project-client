@@ -2,8 +2,8 @@
 
 let apiUrl
 const apiUrls = {
-  production: 'https://thomaslee3d.github.io/quotes_project-client//',
-  development: 'https://thomaslee3d.github.io/quotes_project-client/'
+  production: 'https://pacific-savannah-14495.herokuapp.com/',
+  development: 'https://pacific-savannah-14495.herokuapp.com/'
 }
 
 if (window.location.hostname === 'localhost') {
