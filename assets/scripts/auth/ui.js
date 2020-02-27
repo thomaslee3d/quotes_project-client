@@ -47,10 +47,18 @@ const onSignInSuccess = function (response) {
   // $('#sign-up').hide()
   // $('#change-password').show()
 }
-
+const onLogOutSuccess = function () {
+  $('.user-message').text('Logged Out')
+  $('#sign-in').trigger('reset')
+  $('#change-password').trigger('reset')
+  $('#user-buttons').trigger('reset')
+}
+const onLogOutFailure = function () {
+  $('.user-message').text('Logged Out')
+}
 const onSignInFailure = function () {
   console.log('Sign In Failed')
-  $('.user-message').text('Failed Sign In Attempt!')
+  $('.user-message').text('Failed log out attempt!')
   $('#sign-in').trigger('reset')
 }
 
@@ -72,5 +80,7 @@ module.exports = {
   onSignUpSuccess,
   onSignUpFailure,
   onChangePasswordSuccess,
-  onChangePasswordFailure
+  onChangePasswordFailure,
+  onLogOutSuccess,
+  onLogOutFailure
 }

@@ -26,20 +26,30 @@ const showQuotes = function () {
     }
   })
 }
-
-const deleteQuotes = function (data) {
+const deleteQuotesBtn = function (data) {
+  console.log(data)
   return $.ajax({
-    url: `${config.apiUrl}/quotes/${data.id}`,
+    url: `${config.apiUrl}quotes/${data}`,
     method: 'DELETE',
     headers: {
       Authorization: 'Token token=' + store.user.token
-    },
-    data: data
+    }
+  })
+}
+const deleteQuotes = function (data) {
+  console.log(data)
+  return $.ajax({
+    url: `${config.apiUrl}quotes/${store.quote.id}`,
+    method: 'DELETE',
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    }
   })
 }
 
 module.exports = {
   addQuote,
   showQuotes,
-  deleteQuotes
+  deleteQuotes,
+  deleteQuotesBtn
 }

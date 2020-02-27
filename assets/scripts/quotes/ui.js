@@ -6,16 +6,14 @@ const onAddQuoteSuccess = function (response) {
   store.user = response.user
   console.log('Added a Quote Success ' + store.user)
   $('.user-message').text('A quote is Added!')
-  $('#add-quote').trigger('reset')
 }
 
 const onAddQuoteFailure = function (response) {
-  console.log('Nothing has been Added')
-  $('.user-message').text('A quote Has not been Added!')
+  store.user = response.user
+  console.log('Added a Quote Failed to be Added ' + store.user)
+  $('.user-message').text('A quote was not Added!')
   $('#add-quote').trigger('reset')
 }
-// const getBooksSuccess = (data) => {
-//   // get data from api
 //   console.log(data)
 //   // Use the template + send it the data
 //   const showBooksHtml = showBooksTemplate({ books: data.books })
@@ -24,27 +22,33 @@ const onAddQuoteFailure = function (response) {
 //   // use the complied HTML and append it to the page
 //   $('.content').html(showBooksHtml)
 // }
-const onShowQuotesSuccess = function (data) {
+const onShowQuoteSuccess = function (data) {
   const showQuotesHtml = showQuotesTemplate({ quotes: data.quotes })
   $('.content').html(showQuotesHtml)
 }
 
-const onShowQuotesFailure = function (response) {
+const onShowQuoteFailure = function (response) {
   console.log('onShowQuoteFailure')
 }
-const onDeleteQuotesSuccess = function (response) {
-  console.log('onShowQuoteSuccess')
+const onDeleteQuoteSuccess = function (data) {
+  console.log('onDeleteQuoteSuccess')
+  const showQuotesHtml = showQuotesTemplate({ quotes: data.quotes })
+  $('.content').html(showQuotesHtml)
 }
 
-const onDeleteQuotesFailure = function (response) {
-  console.log('onShowQuoteFailure')
+const onDeleteQuoteFailure = function (response) {
+  console.log('onDeleteQuoteFailure')
+}
+const clearQuotes = () => {
+  $('.content').empty()
 }
 
 module.exports = {
   onAddQuoteSuccess,
   onAddQuoteFailure,
-  onShowQuotesSuccess,
-  onShowQuotesFailure,
-  onDeleteQuotesSuccess,
-  onDeleteQuotesFailure
+  onShowQuoteSuccess,
+  onShowQuoteFailure,
+  onDeleteQuoteSuccess,
+  onDeleteQuoteFailure,
+  clearQuotes
 }

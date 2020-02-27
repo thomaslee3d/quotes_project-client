@@ -15,7 +15,6 @@
       <div class="user-message"></div>
       <div class="game-user"></div>
       <h1>Quotes From A legend</h1>
-
       <form id="sign-up">
          <div class='sign-up-text-container'>
            <input name="credentials[email]" type="text" placeholder="email">
@@ -28,8 +27,8 @@
      </form>
 
      <form id="sign-in">
-           <input name="credentials[email]" type="text" placeholder="email">
-           <input name="credentials[password]" type="password" placeholder="password">
+           <input name="credentials[email]" type="text" placeholder="email" value='1.1'>
+           <input name="credentials[password]" type="password" placeholder="password" value='1'>
 
            <input type='submit' class='btn' value='sign in'>
 
@@ -47,15 +46,18 @@
         <input type='submit' class='btn' value="change-password">
     </form>
 
-    <div id="content" class="content"></div>
+
 
     <form id='user-buttons'>
       <input name="quote[id]" type="text" placeholder="Quote">
+
       <button id='show-quotes-btn' value='Show Quotes'>Show Quotes</button>
-      <button id='delete-quotes' value='Delete Quotes'>Delete Quotes</button>
+      <input type="submit" class='delete-quotes' value='Delete Quotes'>
+
+
     </form>
 
-
-
+      <button type='submit' id='log-out' value='log out'>log out</button>
+      <div id="content" class="content"></div>
     </body>
 </html>

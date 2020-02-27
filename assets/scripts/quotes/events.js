@@ -4,17 +4,6 @@ const getFormFields = require('./../../../lib/get-form-fields')
 const api = require('./api')
 const ui = require('./ui')
 
-// const getQuotesSuccess = (data) => {
-//   // get data from api
-//   console.log(data)
-//   // Use the template + send it the data
-//   const showQuotesHtml = showQuotesTemplate({ quotes: data.quotes })
-//   // handlebars magic putsthe data in the data in the spots we designated
-//   // in putsthetemplate file
-//   // use the complied HTML and append it to the page
-//   $('.content').html(showQuotesHtml)
-// }
-
 const onAddQuote = function (event) {
   event.preventDefault()
 
@@ -26,30 +15,47 @@ const onAddQuote = function (event) {
     .catch(ui.onAddQuoteFailure)
 }
 
-const onShowQuotes = function () {
+const onShowQuotes = function (event) {
   event.preventDefault()
 
   api.showQuotes()
-    .then(ui.onShowQuotesSuccess)
-    .catch(ui.onShowQuotesFailure)
+    .then(ui.onShowQuoteSuccess)
+    .catch(ui.onShowQuoteFailure)
 }
 
-const onDeleteQuotes = function () {
+const onDeleteQuotes = function (event) {
   event.preventDefault()
-  // const form = event.target
-  // const getForm = getFormFields(form)
-  api.deleteQuotes
-    .then(ui.onDeleteQuoteSuccess)
-    .catch(ui.onDeleteQuoteSuccess)
+  const form = event.target
+  const getForm = getFormFields(form)
+  console.log('On Delete' + getForm)
+  api.deleteQuotes(getForm)
+    .then(function () {
+      onShowQuotes(event)
+    })
+    .catch(ui.onDeleteQuoteFailure)
+}
+
+const onDeleteQuoteBtn = function (event) {
+  event.preventDefault()
+  const id = $(event.target).data('id')
+  console.log('On Delete Btn ' + id)
+  api.deleteQuotesBtn(id)
+    .then(function () {
+      onShowQuotes(event)
+    })
+    .catch(ui.onDeleteQuoteFailure)
 }
 
 const addHandlers = () => {
+  $('#log-out').on('click', ui.clearQuotes)
   $('#show-quotes-btn').on('click', onShowQuotes)
+  $('.content').on('submit', '.dynamic-data', '.dynamic-quote', onDeleteQuoteBtn)
 }
 
 module.exports = {
   onAddQuote,
   onShowQuotes,
   onDeleteQuotes,
+  onDeleteQuoteBtn,
   addHandlers
 }
