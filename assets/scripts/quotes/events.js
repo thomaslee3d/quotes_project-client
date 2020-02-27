@@ -1,15 +1,12 @@
 'use strict'
-
-const getFormFields = require('./../../../lib/get-form-fields')
+const getFormFields = require('.././../../lib/get-form-fields')
 const api = require('./api')
 const ui = require('./ui')
 
 const onAddQuote = function (event) {
   event.preventDefault()
-
   const form = event.target
   const getForm = getFormFields(form)
-  console.log(getForm)
   api.addQuote(getForm)
     .then(ui.onAddQuoteSuccess)
     .catch(ui.onAddQuoteFailure)
@@ -17,7 +14,6 @@ const onAddQuote = function (event) {
 
 const onShowQuotes = function (event) {
   event.preventDefault()
-
   api.showQuotes()
     .then(ui.onShowQuoteSuccess)
     .catch(ui.onShowQuoteFailure)
@@ -25,9 +21,9 @@ const onShowQuotes = function (event) {
 
 const onDeleteQuotes = function (event) {
   event.preventDefault()
+  ui.clearQuotes()
   const form = event.target
   const getForm = getFormFields(form)
-  console.log('On Delete' + getForm)
   api.deleteQuotes(getForm)
     .then(function () {
       onShowQuotes(event)
@@ -37,8 +33,8 @@ const onDeleteQuotes = function (event) {
 
 const onDeleteQuoteBtn = function (event) {
   event.preventDefault()
+  ui.clearQuotes()
   const id = $(event.target).data('id')
-  console.log('On Delete Btn ' + id)
   api.deleteQuotesBtn(id)
     .then(function () {
       onShowQuotes(event)
@@ -47,6 +43,7 @@ const onDeleteQuoteBtn = function (event) {
 }
 
 const addHandlers = () => {
+  $('.add-quote').on('submit', onShowQuotes)
   $('#log-out').on('click', ui.clearQuotes)
   $('#show-quotes-btn').on('click', onShowQuotes)
   $('.content').on('submit', '.dynamic-data', '.dynamic-quote', onDeleteQuoteBtn)

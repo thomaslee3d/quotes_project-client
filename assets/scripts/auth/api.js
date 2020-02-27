@@ -4,7 +4,6 @@ const config = require('./../config')
 const store = require('./../store')
 
 const signUp = function (data) {
-  console.log('sent sign up' + data)
   return $.ajax({
     url: config.apiUrl + '/sign-up',
     method: 'POST',
@@ -31,7 +30,6 @@ const logOut = function () {
 }
 
 const changePassword = function (data) {
-  console.log('this is my change passw patch')
   return $.ajax({
     url: config.apiUrl + '/change-password',
     method: 'PATCH',

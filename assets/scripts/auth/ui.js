@@ -1,11 +1,12 @@
 
 const store = require('./../store')
 
+
 const onSignUpSuccess = function (response) {
   store.user = response.user
   console.log('Sign Up Successful')
-  $('#sign-in').trigger('reset')
-  $('#sign-up').trigger('reset')
+  $('.add-quote-container').hide()
+  $('.sign-in-container').hide()
   $('.user-message').text('Log In Success!')
 
   // $('.game-message').show()
@@ -34,7 +35,13 @@ const onSignUpFailure = function (response) {
 
 const onSignInSuccess = function (response) {
   store.user = response.user
-  console.log('Sign In S')
+  $('.add-quote-container').show()
+  $('.sign-up-container').hide()
+  $('.sign-in-container').hide()
+  $('.log-out-btn').show()
+  $('.user-button-container').show()
+  $('change-password-container').show()
+  $('show-quotes-btn').show()
   $('#sign-in').trigger('reset')
   $('#sign-up').trigger('reset')
   $('.user-message').text('Log In Success!')
@@ -57,19 +64,16 @@ const onLogOutFailure = function () {
   $('.user-message').text('Logged Out')
 }
 const onSignInFailure = function () {
-  console.log('Sign In Failed')
   $('.user-message').text('Failed log out attempt!')
   $('#sign-in').trigger('reset')
 }
 
 const onChangePasswordSuccess = function () {
-  console.log('You changed Your Password')
   $('.user-message').text('you changed Your password... cool huh?')
   $('#change-password').trigger('reset')
 }
 
 const onChangePasswordFailure = function () {
-  console.log('You Did not change your password...wack huh?')
   $('.user-message').text('You Did not change your password...wack huh?')
   $('#change-password').trigger('reset')
 }

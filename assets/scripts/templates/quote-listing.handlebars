@@ -2,19 +2,24 @@
   {{log quote}}
   <section class='dynamic-data'>
    <form class="dynamic-quote" data-id="{{quote.id}}">
-      <h6>Person:</h6>
-      <h3>
-        {{quote.given_name}}
-      </h3>
-      <h6>Saying:</h6>
-      <p>
+
+    {{#if quote.editable}}
         {{#if quote.quote}}
+        <h6>Person:</h6>
+        <h3>
+          {{quote.given_name}}
+        </h3>
+        <h6>Saying:</h6>
+        <p>
+          {{quote.id}}
           {{quote.quote}}
+        </p>
+        {{>delete-quotes quote.id}}
         {{else}}
           Add Saying for Person.
         {{/if}}
-      </p>
-       {{>delete-quotes quote.id}}
+    {{/if}}
+
    </form>
   </section>
 

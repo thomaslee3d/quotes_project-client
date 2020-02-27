@@ -26,8 +26,8 @@ const showQuotes = function () {
     }
   })
 }
+
 const deleteQuotesBtn = function (data) {
-  console.log(data)
   return $.ajax({
     url: `${config.apiUrl}quotes/${data}`,
     method: 'DELETE',
@@ -37,7 +37,6 @@ const deleteQuotesBtn = function (data) {
   })
 }
 const deleteQuotes = function (data) {
-  console.log(data)
   return $.ajax({
     url: `${config.apiUrl}quotes/${store.quote.id}`,
     method: 'DELETE',

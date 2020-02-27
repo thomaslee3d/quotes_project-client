@@ -1,1 +1,27 @@
 @import '~bootstrap/scss/bootstrap';
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+body{
+    margin: 0 auto;
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 100%;
+    background-position: center;
+    background: url(assets/images/quotes-bg.jpg);
+
+}
+.btn {
+    font-size: 24px;
+    background-color: rgb(0, 197, 231);
+    box-shadow: 1px 1px 1px #000;
+    margin: 5px;
+  }
+  .btn:hover{
+    background-color: rgb(236, 5, 167);
+    box-shadow: 1px 1px 1px #000;
+  }
